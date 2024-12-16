@@ -13,13 +13,12 @@ const userSchema = new Schema(
          required: true,
          lowercase: true,
          trim: true,
-         minLength: 4,
+         minLength: 3,
       },
       lastname: {
          type: String,
          required: true,
          lowercase: true,
-         minLength: 4,
       },
       password: {
          type: String,

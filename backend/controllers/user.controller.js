@@ -68,7 +68,7 @@ export const userRegister = async (req, res, next) => {
       return res.json({
          success: true,
          message: "User registered successfully",
-         data: user,
+         token,
       });
    } catch (error) {
       console.log(error);
@@ -215,13 +215,6 @@ export const updateUser = async (req, res, next) => {
 export const bulk = async (req, res, next) => {
    const filter = req.query.filter || "";
 
-   if (!filter) {
-      return res.status(401).json({
-         success: false,
-         message: "Filter parameter is required",
-      });
-   }
-
    try {
       const users = await User.find({
          $or: [
@@ -232,7 +225,7 @@ export const bulk = async (req, res, next) => {
 
       return res.json({
          success: true,
-         data: users,
+         users,
       });
    } catch (error) {
       console.error("Error fetching users:", error);
